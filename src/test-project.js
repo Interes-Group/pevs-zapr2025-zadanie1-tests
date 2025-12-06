@@ -60,6 +60,9 @@ logFile = fs.createWriteStream(testLogFile, {flags: "a"});
 
 cleanup();
 
+log("updating repository")
+child_process.execSync("git pull", {stdio: "inherit", cwd: testProjectFolder});
+
 log("compiling test project");
 try {
 	child_process.execSync(`gcc -std=c17 -o ${COMPILATION_OUTPUT} -Wall -Wextra ${testProjectSource} ${LOG_TO_FILE ? `>> ${testLogFile} 2>&1` : ""}`, {stdio: "inherit"});
