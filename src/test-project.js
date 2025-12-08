@@ -65,7 +65,7 @@ child_process.execSync("git pull", {stdio: "inherit", cwd: testProjectFolder});
 
 log("compiling test project");
 try {
-	child_process.execSync(`gcc -std=c17 -o ${COMPILATION_OUTPUT} -Wall -Wextra ${testProjectSource} ${LOG_TO_FILE ? `>> ${testLogFile} 2>&1` : ""}`, {stdio: "inherit"});
+	child_process.execSync(`gcc -std=c17 -o ${COMPILATION_OUTPUT} -lm -Wall -Wextra ${testProjectSource} ${LOG_TO_FILE ? `>> ${testLogFile} 2>&1` : ""}`, {stdio: "inherit"});
 	log("project compiled successfully to ", COMPILATION_OUTPUT);
 	log("running tests");
 
